@@ -1,0 +1,14 @@
+name: scam-shield-env
+description: AI Scam Detection Environment for Indian users
+version: 1.0
+
+entry_point: env.environment:ScamShieldEnv
+
+tasks:
+  - easy
+  - medium
+  - hard
+
+evaluation:
+  metric: reward
+  target: 0.8
