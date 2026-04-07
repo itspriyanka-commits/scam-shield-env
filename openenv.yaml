@@ -1,8 +1,21 @@
 name: scam-shield-env
-description: AI Scam Detection Environment for Indian users
-version: 1.0
+description: >
+  A reinforcement learning environment for detecting scam messages
+  targeting Indian users. Covers phishing, lottery fraud, UPI fraud,
+  vishing, job fraud, fake customs, and impersonation scams.
+version: "1.0"
 
 entry_point: env.environment:ScamShieldEnv
+
+observation_space:
+  type: text
+  description: A suspicious or normal message to be analyzed
+
+action_space:
+  is_scam: boolean
+  scam_type: string
+  explanation: string
+  advice: string
 
 tasks:
   - easy
@@ -12,3 +25,12 @@ tasks:
 evaluation:
   metric: reward
   target: 0.8
+  max_reward: 1.0
+  grader: env.graders:grade
+
+tags:
+  - scam-detection
+  - india
+  - nlp
+  - safety
+  - text-classification
